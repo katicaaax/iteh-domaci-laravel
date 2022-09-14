@@ -33,5 +33,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::get('pastry-categories/{id}', [PastryCategoryController::class, 'show']);
     Route::patch('pastry-categories/{id}', [PastryCategoryController::class, 'patch']);
     Route::delete('pastry-categories/{id}', [PastryCategoryController::class, 'delete']);
+
+    Route::get('my-pastries', [PastryController::class, 'getUserPastries']);
 });
 
