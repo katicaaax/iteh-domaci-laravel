@@ -17,7 +17,7 @@ use App\Http\Controllers\PastryController;
 |
 */
 
-
+ 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
 
@@ -25,9 +25,13 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::get('pastries', [PastryController::class, 'index']);
     Route::post('pastries', [PastryController::class, 'store']);
     Route::get('pastries/{id}', [PastryController::class, 'show']);
+    Route::patch('pastries/{id}', [PastryController::class, 'patch']);
     Route::delete('pastries/{id}', [PastryController::class, 'delete']);
 
     Route::get('pastry-categories', [PastryCategoryController::class, 'index']);
     Route::post('pastry-categories', [PastryCategoryController::class, 'store']);
+    Route::get('pastry-categories/{id}', [PastryCategoryController::class, 'show']);
+    Route::patch('pastry-categories/{id}', [PastryCategoryController::class, 'patch']);
+    Route::delete('pastry-categories/{id}', [PastryCategoryController::class, 'delete']);
 });
 

@@ -28,17 +28,27 @@ class PastryCategoryController extends Controller
      */
     public function store(PastryCategoryStoreRequest $request)
     {
-        return new PastryCategoryResource(Pastry::create($request->only('name', 'description')));
+        return new PastryCategoryResource(PastryCategory::create($request->only('name', 'description')));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\PastryCategory  $pastryCategory
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PastryCategory $pastryCategory)
+    public function patch($id, Request $request)
     {
-        //
+        $category = PastryCategory::findOrFail($id);
+        $category->update($request->all());
+        return new PastryCategoryResource($category);
+    }
+
+    public function show($id)
+    {
+        $category = PastryCategory::findOrFail($id);
+        return new PastryCategoryResource($category);
+    }
+
+    public function delete($id)
+    {
+        $pastry = PastryCategory::find($id);
+        $pastry->delete();
+
+        return response()->json(["message" => "deleted"], 200);
     }
 }
