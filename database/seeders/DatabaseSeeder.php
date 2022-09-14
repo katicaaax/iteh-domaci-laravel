@@ -15,22 +15,11 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory(2)->create();
 
-        \App\Models\Pastry::create([
-            'name' => "Burek - Sunka kackavalj",
-            'description' => "Sa sunkom i kackavaljem Trpkovic!"
-        ]);
+        $this->call(PastryTableSeeder::class);
+        $this->call(PastryCategoryTableSeeder::class);
 
-        \App\Models\Pastry::create([
-            'name' => "Burek - Meso",
-            'description' => "Sa mesom Trpkovic!"
-        ]);
-        \App\Models\Pastry::create([
-            'name' => "Eurokrem kiflice",
-            'description' => "Kiflice eurokrem Trpkovic!"
-        ]);
-        \App\Models\Pastry::create([
-            'name' => "Visnja kiflice",
-            'description' => "Kiflice visnja Trpkovic!"
-        ]);
+        $categories = \App\Models\PastryCategory::all();
+        $categories[0]->pastries()->sync([1,2]);
+        $categories[1]->pastries()->sync([3,4]); 
     }
 }
