@@ -12,4 +12,9 @@ class Pastry extends Model
     ];
 
     public $timestamps = false;
+
+    public function categories()
+    {
+        return $this->belongsToMany(PastryCategory::class, 'pastry_pastry_category');
+    }
 }
