@@ -8,7 +8,8 @@ class Pastry extends Model
 {
     protected $fillable = [
         'name',
-        'description'
+        'ingredients',
+        'user_id,'
     ];
 
     public $timestamps = false;

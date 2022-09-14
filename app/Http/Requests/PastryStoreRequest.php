@@ -25,7 +25,7 @@ class PastryStoreRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'description' => 'required'
+            'ingredients' => 'required|string'
         ];
     }
 }
