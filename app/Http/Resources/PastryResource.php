@@ -17,7 +17,8 @@ class PastryResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'desc' => $this->description
+            'ingredients' => $this->ingredients,
+            'categories' => $this->categories
         ];
     }
 }
